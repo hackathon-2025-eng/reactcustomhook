@@ -33,7 +33,18 @@ const PhotoGrid = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0">
         {data?.map((product, index) => {
           const colors = ["#e74c3c", "#3498db", "#2ecc71", "#f39c12", "#9b59b6", "#1abc9c", "#e67e22", "#34495e"];
+          const descriptions = [
+            "A beautiful product for everyday use.",
+            "Crafted with care and precision.",
+            "Designed to inspire creativity.",
+            "Perfect for modern lifestyles.",
+            "Built to last a lifetime.",
+            "Elegance meets functionality.",
+            "Your next favorite item awaits.",
+            "Simple, sleek, and stunning.",
+          ];
           const bgColor = colors[index % colors.length];
+          const desc = descriptions[index % descriptions.length];
           return (
             <div
               key={product.id}
@@ -43,12 +54,12 @@ const PhotoGrid = () => {
                 className="w-48 h-48 mb-3 flex items-center justify-center rounded"
                 style={{ backgroundColor: bgColor }}
               >
-                <span className="text-white text-lg font-semibold">
-                  {product.id}
+                <span className="text-white text-sm font-semibold">
+                  600 x 600
                 </span>
               </div>
               <p className="text-[#ccc] text-sm text-center w-full">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                {desc}
               </p>
             </div>
           );
