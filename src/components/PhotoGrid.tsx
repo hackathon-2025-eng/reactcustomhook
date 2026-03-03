@@ -31,24 +31,28 @@ const PhotoGrid = () => {
     <div className="min-h-screen bg-[#1a1a1a] p-6">
       <h1 className="text-center text-3xl font-bold text-white mb-6">Photos</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0">
-        {data?.map((product) => (
-          <div
-            key={product.id}
-            className="border border-[#444] p-4 flex flex-col items-center"
-          >
-            <img
-              src={product.images?.[0]?.replace(/[\[\]"]/g, "") || "https://via.placeholder.com/600"}
-              alt={product.title}
-              className="w-48 h-48 object-cover mb-3"
-              onError={(e) => {
-                (e.target as HTMLImageElement).src = "https://via.placeholder.com/600";
-              }}
-            />
-            <p className="text-[#ccc] text-sm text-center truncate w-full">
-              {product.title}
-            </p>
-          </div>
-        ))}
+        {data?.map((product, index) => {
+          const colors = ["#e74c3c", "#3498db", "#2ecc71", "#f39c12", "#9b59b6", "#1abc9c", "#e67e22", "#34495e"];
+          const bgColor = colors[index % colors.length];
+          return (
+            <div
+              key={product.id}
+              className="border border-[#444] p-4 flex flex-col items-center"
+            >
+              <div
+                className="w-48 h-48 mb-3 flex items-center justify-center rounded"
+                style={{ backgroundColor: bgColor }}
+              >
+                <span className="text-white text-lg font-semibold">
+                  {product.id}
+                </span>
+              </div>
+              <p className="text-[#ccc] text-sm text-center w-full">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
